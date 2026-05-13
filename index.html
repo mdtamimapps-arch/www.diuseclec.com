@@ -269,12 +269,79 @@
             text-transform: uppercase;
         }
 
+        /* LAB hub: এক বক্সের ভিতর H1 / H2 */
+        .lab-drive-wrap {
+            width: 90%;
+            max-width: 440px;
+            margin: 0 auto 28px auto;
+        }
+
+        .lab-drive-wrap .drive-premium-card {
+            flex: none;
+            width: 100%;
+            max-width: none;
+            min-width: 0;
+        }
+
+        .lab-split {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+            width: 100%;
+        }
+
+        .lab-split-link {
+            flex: 1;
+            min-width: 0;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.2em;
+            padding: 14px 8px;
+            border-radius: 12px;
+            text-align: center;
+            background: linear-gradient(145deg, rgba(0, 100, 120, 0.45), rgba(60, 0, 90, 0.5));
+            border: 1px solid rgba(0, 210, 255, 0.25);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .lab-split-link:hover {
+            transform: translateY(-2px) scale(1.02);
+            border-color: rgba(0, 255, 200, 0.45);
+            box-shadow: 0 0 22px rgba(0, 210, 255, 0.3);
+        }
+
+        .lab-split-link:active {
+            transform: scale(0.98);
+        }
+
+        .lab-hint-foot {
+            position: relative;
+            z-index: 1;
+            margin-top: 12px;
+            font-size: 10px;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 20px;
             width: 90%;
             max-width: 1100px;
+        }
+
+        /* একমাত্র সেকশন কার্ড (শুধু H) মাঝখানে, খুব প্রশস্ত না হয় */
+        #section-grid:has(> :only-child) {
+            max-width: 360px;
+            margin-left: auto;
+            margin-right: auto;
+            grid-template-columns: 1fr;
         }
 
         .section-card {
@@ -419,6 +486,8 @@
             align-items: center;
             gap: 5px;
             transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .designer-badge:hover {
@@ -970,7 +1039,7 @@
                 <span class="term-badge">TLS 1.3</span>
             </div>
             <div class="premium-term-body">
-                <div class="welcome-text">WELCOME TO DIU SWE PORTAL BY M_H_T</div>
+                <div class="welcome-text">WELCOME TO DIU SWE PORTAL</div>
                 <div class="hacker-logo-container" style="text-align: center; margin-bottom: 18px;">
                     <img src="https://i.pinimg.com/originals/58/5d/5f/585d5f202586b8cd0537e73f44b37780.png"
                         alt="" width="120" height="120">
@@ -989,9 +1058,18 @@
     ========================================================
     💡 HINTS / নির্দেশিকা (কিভাবে লিংক বসাবেন):
     ১. একদম নিচের দিকে <script> ট্যাগের ভেতরে যান।
-    ২. সেখানে 'sectionLinks' নামে একটি তালিকা দেখতে পাবেন।
-    ৩. সেখানে "A": "লিংক" এর জায়গায় আপনার নির্দিষ্ট হোয়াটসঅ্যাপ গ্রুপের লিংকটি দিন।
-    ৪. এভাবে A থেকে Z পর্যন্ত সব সেকশনের লিংক আলাদাভাবে বসাতে পারবেন।
+    ২. 'sectionLinks' এ শুধু Section H আছে — "H" এর হোয়াটসঅ্যাপ URL বদলাতে পারবেন।
+    ৩. LAB বক্স: উপরের HTML এ "TODO: H1 Drive" / "TODO: H2 Drive" কমেন্টের ঠিক নিচের <a> ট্যাগের href এ
+       Google Drive ফোল্ডার লিংক বসান (SE/BNS/ENG এর মতোই)।
+    --------------------------------------------------------
+    DiuRoutine (diuroutine.com) আপনার সাইটে শুধু রুটিন টেবিল — অন্য হেডার/ফুটার ছাড়া:
+    · সাধারণ static HTML দিয়ে ব্রাউজারে সরাসরি তাদের ডাটা টেনে আনা (fetch) সম্ভব নয় যদি না তাদের
+      সার্ভার CORS দিয়ে আপনার ডোমেইনকে অনুমতি দেয় + আলাদা public API থাকে। এখনকার ফর্ম POST /routine
+      পেজ রিফ্রেশ/ HTML রিটার্ন টাইপ — এটাকে অন্য সাইটের JS থেকে চালানোর মানে cross-origin নীতি লঙ্ঘন।
+    · সমাধান: (১) DiuRoutine ডেভেলপারের কাছে embed URL বা API চাও, (২) নিজের backend দিয়ে proxy
+      (অবশ্যই তাদের Terms অনুযায়ী), (৩) পুরো সাইট iframe এ — তবে পুরো UI দেখা যাবে; অনেক সাইট
+      X-Frame-Options দিয়ে iframe ব্লক করে। কোনো “টোকেন” এই ফাইলে নেই; টোকেন থাকলেও সেটা গোপন
+      রাখতে হয়, পাবলিক HTML এ বসানো ঠিক নয়।
     ======================================================== 
     -->
 
@@ -1039,24 +1117,26 @@
         </a>
     </div>
 
-    <div class="global-links-container">
-        <!-- এখানে অফিসিয়াল গ্রুপের লিংক বসাবেন (href="#" এর জায়গায়) -->
-        <a href="#" target="_blank" class="global-card">
-            <span class="card-icon">🎓</span>
-            <div class="card-text">
-                <span class="card-title">SWE Official Group</span>
-                <span class="join-btn global-btn">Join Now</span>
+    <!--
+      LAB Google Drive লিংক বসানো:
+      নিচে H1 ও H2 এর href="#" দুটো খুঁজে আপনার Drive ফোল্ডার লিংক দিয়ে বদলান।
+      উদাহরণ: href="https://drive.google.com/drive/folders/YOUR_FOLDER_ID?usp=sharing"
+    -->
+    <div class="swe-drive-heading">Lab — Lecture slides (Google Drive)</div>
+    <div class="lab-drive-wrap">
+        <div class="drive-premium-card" style="cursor: default;">
+            <div class="drive-premium-inner">
+                <div class="drive-cat-label">LAB</div>
+                <div class="drive-cat-sub">ল্যাব কোর্সের স্লাইড / নোট — নিচে H1 বা H2 বেছে নিন</div>
+                <div class="lab-split">
+                    <!-- TODO: H1 Drive — এখানে href বদলান -->
+                    <a class="lab-split-link" href="https://drive.google.com/drive/folders/1JqJA3t6xr22wVsTt-wmiGlSCLqG_nQkE?usp=sharing" target="_blank" rel="noopener noreferrer" title="Lab H1 slides">H1</a>
+                    <!-- TODO: H2 Drive — এখানে href বদলান -->
+                    <a class="lab-split-link" href="https://drive.google.com/drive/folders/1yYPIoQPZqwPAJJM4Czck-oiZ15yNu2yH?usp=sharing" target="_blank" rel="noopener noreferrer" title="Lab H2 slides">H2</a>
+                </div>
+                <div class="lab-hint-foot">লিংক এখনো না দিলে # থাকবে — সোর্সে দুইটা TODO কমেন্টের পাশের href আপডেট করুন।</div>
             </div>
-        </a>
-
-        <!-- আনঅফিসিয়াল গ্রুপের লিংক -->
-        <a href="https://chat.whatsapp.com/JJTS3zGWhEsBk7LMfw6FiF" target="_blank" class="global-card">
-            <span class="card-icon">🚀</span>
-            <div class="card-text">
-                <span class="card-title">SWE Unofficial Group</span>
-                <span class="join-btn global-btn">Join Now</span>
-            </div>
-        </a>
+        </div>
     </div>
 
     <div class="grid-container" id="section-grid">
@@ -1070,9 +1150,11 @@
         </div>
     </div>
 
-    <div class="designer-badge">
+    <a href="https://wa.me/8801963177023?text=Hi!%20DIU%20SWE%20Portal%20-%20The_octa_Squad"
+        target="_blank" rel="noopener noreferrer" class="designer-badge"
+        title="WhatsApp: The_octa_Squad (same number as portal contact)">
         <span class="highlight">Designed_by_The_octa_Squad</span>
-    </div>
+    </a>
 
 
 
@@ -1092,27 +1174,12 @@
 
         // ==========================================
         // 💡 HINTS / নির্দেশিকা:
-        // নিচের 'sectionLinks' অবজেক্টে প্রতিটি সেকশনের জন্য আলাদা আলাদা 
-        // হোয়াটসঅ্যাপ গ্রুপের লিংক দেওয়া আছে। 
-        // আপনি চাইলে যেকোনো সেকশনের লিংক পরিবর্তন করতে পারেন।
-        // যদি একটি সেকশনের একাধিক লিংক থাকে, তবে থার্ড ব্র্যাকেট [] এর ভেতর 
-        // কমা (,) দিয়ে লিংকগুলো বসাতে পারেন। যেমন: Section C এর উদাহরণটি দেখুন।
+        // নিচের 'sectionLinks' এ শুধু Section H এর হোয়াটসঅ্যাপ লিংক আছে।
+        // লিংক বদলাতে চাইলে "H" কীটি রেখে শুধু URL আপডেট করুন।
         // ==========================================
 
         const sectionLinks = {
-            "A": "https://chat.whatsapp.com/K5SmAln22nR9Ut5SwyNZvv?mode=gi_t",
-            "B": "https://chat.whatsapp.com/Jyg9zgBshADDe4WIMWKH5h",
-            "C": [
-                "https://chat.whatsapp.com/J5WofsIGvtBE5MXzUlHpUL?mode=gi_t",
-                "https://m.me/j/Aba7gQCyPvDzDrSC/?send_source=gc%3Acopy_invite_link_c"
-            ],
-            "D": "https://chat.whatsapp.com/Juik4LEhysOLDBc2hLlyh4",
-            "E": "https://chat.whatsapp.com/EgpIFPrOLr31USBOzam9ge",
-            "F": "https://chat.whatsapp.com/FWKLQjeChdOJjkQDoSe4nr",
-            "G": "https://chat.whatsapp.com/BSpN6XI2QiJ147wpD8zCPR",
-            "H": "https://chat.whatsapp.com/Dwfu9s1n9IM4FefWqerdFF?mlu=0&s=cl&p=a",
-            "I": "https://chat.whatsapp.com/IFqfy2d69kRI3G7Ns0aBcv",
-            "J": "https://chat.whatsapp.com/LH0mgQ1norO1WNoVg8hc6O"
+            "H": "https://chat.whatsapp.com/Dwfu9s1n9IM4FefWqerdFF?mlu=0&s=cl&p=a"
         };
 
         const grid = document.getElementById('section-grid');
