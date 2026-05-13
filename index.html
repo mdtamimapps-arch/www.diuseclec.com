@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIU SWE Unofficial Portal</title>
+    <style>
+        :root {
+            --rgb-border: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        }
+
+        @keyframes bg-glow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes rgb-anim {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 400% 0%;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+            background-size: 400% 400%;
+            animation: bg-glow 15s ease infinite;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .bismillah {
+            font-size: 26px;
+            margin-top: 30px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .live-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fff;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Premium RGB Ring */
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: var(--rgb-border);
+            background-size: 400%;
+            border-radius: 50%;
+            z-index: 0;
+            animation: rgb-anim 10s linear infinite;
+            filter: blur(5px);
+        }
+
+        .logo-circle img {
+            width: 85%;
+            height: auto;
+        }
+
+        .uni-info {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .uni-name {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin: 10px 0;
+        }
+
+        .unofficial-badge {
+            background: #ff4b2b;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .dept-title {
+            font-size: 20px;
+            color: #00d2ff;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* SWE Drive categories — premium RGB row under dept title */
+        .swe-drive-strip {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 16px;
+            width: 90%;
+            max-width: 900px;
+            margin: 8px auto 28px auto;
+        }
+
+        .drive-premium-card {
+            flex: 1 1 160px;
+            min-width: 140px;
+            max-width: 280px;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 16px;
+            padding: 2px;
+            background: var(--rgb-border);
+            background-size: 400%;
+            animation: rgb-anim 8s linear infinite;
+            box-shadow:
+                0 0 22px rgba(255, 0, 128, 0.25),
+                0 0 40px rgba(0, 210, 255, 0.12),
+                0 10px 32px rgba(0, 0, 0, 0.45);
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 0.35s ease;
+        }
+
+        .drive-premium-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow:
+                0 0 35px rgba(255, 100, 200, 0.45),
+                0 0 55px rgba(0, 210, 255, 0.25),
+                0 18px 40px rgba(0, 0, 0, 0.55);
+        }
+
+        .drive-premium-inner {
+            border-radius: 14px;
+            background: linear-gradient(145deg, rgba(28, 28, 42, 0.95), rgba(14, 14, 24, 0.98));
+            backdrop-filter: blur(16px);
+            padding: 18px 16px 16px 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drive-premium-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 180deg at 50% 50%,
+                    transparent 0deg,
+                    rgba(255, 0, 100, 0.06) 60deg,
+                    transparent 120deg,
+                    rgba(0, 255, 200, 0.06) 180deg,
+                    transparent 240deg,
+                    rgba(100, 100, 255, 0.08) 300deg,
+                    transparent 360deg);
+            animation: drive-shine 12s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes drive-shine {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .drive-cat-label {
+            position: relative;
+            z-index: 1;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #fff, #b8e6ff, #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        }
+
+        .drive-cat-sub {
+            position: relative;
+            z-index: 1;
+            margin-top: 8px;
+            font-size: 11px;
+            line-height: 1.45;
+            color: rgba(255, 255, 255, 0.72);
+            letter-spacing: 0.5px;
+        }
+
+        .drive-cat-hint {
+            position: relative;
+            z-index: 1;
+            margin-top: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #00d2ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .swe-drive-heading {
+            width: 90%;
+            max-width: 900px;
+            margin: 18px auto 10px auto;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1100px;
+        }
+
+        .section-card {
+            background: rgba(20, 20, 30, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 18px;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Premium RGB border effect */
+        .section-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 2px;
+            background: var(--rgb-border);
+            background-size: 400%;
+            animation: rgb-anim 10s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .section-card:hover::after {
+            opacity: 1;
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border-color: transparent;
+        }
+
+        .section-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .join-btn {
+            background: linear-gradient(45deg, #00b09b, #96c93d);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 176, 155, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            color: white !important;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 85%;
+            margin-top: 5px;
+        }
+
+        .join-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 176, 155, 0.6);
+            background: linear-gradient(45deg, #96c93d, #00b09b);
+        }
+
+        .routine-btn {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+        }
+
+        .routine-btn:hover {
+            box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+        }
+
+        .credit-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 15px 25px;
+            margin: 30px auto 10px auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 90%;
+            max-width: 650px;
+            font-size: 14px;
+            color: #ddd;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .credit-box .icon {
+            font-size: 28px;
+            white-space: nowrap;
+        }
+
+        .credit-box strong {
+            color: #ffc107;
+        }
+
+        .credit-box em {
+            color: #00d2ff;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        .designer-badge {
+            margin-top: 40px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            color: #ddd;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .designer-badge:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #00d2ff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.2);
+        }
+
+        .designer-badge .highlight {
+            color: #00d2ff;
+            font-weight: 800;
+            text-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
+        }
+
+        .global-links-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            width: 90%;
+            max-width: 800px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .global-card {
+            background: rgba(20, 20, 30, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 18px;
+            padding: 15px 25px;
+            text-align: left;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            flex: 1;
+            min-width: 280px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .global-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 2px;
+            background: var(--rgb-border);
+            background-size: 400%;
+            animation: rgb-anim 10s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .global-card:hover::after {
+            opacity: 1;
+        }
+
+        .global-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            background: rgba(30, 30, 40, 0.8);
+        }
+
+        .global-card .card-icon {
+            font-size: 40px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+        }
+
+        .global-card .card-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .global-card .card-title {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #fff, #a5a5a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .global-btn {
+            width: fit-content;
+            padding: 8px 18px;
+            font-size: 12px;
+            margin-top: 0;
+        }
+
+        body.loading {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Premium cyber-security boot loader */
+        #hacker-loader {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #010108;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+            color: #5dffc4;
+            transition: opacity 0.55s ease-out, visibility 0.55s;
+            overflow: hidden;
+        }
+
+        #hacker-loader::before {
+            content: '';
+            position: absolute;
+            inset: -40%;
+            background:
+                linear-gradient(rgba(0, 255, 200, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 180, 255, 0.035) 1px, transparent 1px);
+            background-size: 56px 56px;
+            transform: rotate(-4deg);
+            pointer-events: none;
+            animation: cyber-grid-pan 14s linear infinite;
+        }
+
+        @keyframes cyber-grid-pan {
+            0% {
+                transform: rotate(-4deg) translate(0, 0);
+            }
+
+            100% {
+                transform: rotate(-4deg) translate(56px, 56px);
+            }
+        }
+
+        #hacker-loader::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 120% 70% at 50% -10%, rgba(0, 255, 200, 0.12), transparent 50%),
+                radial-gradient(ellipse 80% 50% at 100% 100%, rgba(0, 100, 255, 0.1), transparent 45%),
+                radial-gradient(ellipse 60% 40% at 0% 80%, rgba(180, 0, 255, 0.06), transparent 40%);
+            pointer-events: none;
+        }
+
+        .cyber-scanlines {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: repeating-linear-gradient(180deg,
+                    rgba(0, 0, 0, 0),
+                    rgba(0, 0, 0, 0) 2px,
+                    rgba(0, 0, 0, 0.22) 3px,
+                    rgba(0, 0, 0, 0.22) 4px);
+            opacity: 0.4;
+            mix-blend-mode: multiply;
+        }
+
+        .cyber-vignette {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.75);
+        }
+
+        .terminal-box {
+            width: 92%;
+            max-width: 640px;
+            padding: 0;
+            border-radius: 14px;
+            background: linear-gradient(165deg, rgba(6, 22, 20, 0.97), rgba(2, 6, 14, 0.98));
+            border: 1px solid rgba(0, 255, 200, 0.22);
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.5),
+                0 0 50px rgba(0, 255, 200, 0.12),
+                0 0 80px rgba(0, 140, 255, 0.08),
+                0 30px 70px rgba(0, 0, 0, 0.9),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .term-glow-edge {
+            position: absolute;
+            inset: -1px;
+            border-radius: 14px;
+            padding: 1px;
+            background: linear-gradient(120deg,
+                    rgba(0, 255, 200, 0.5),
+                    rgba(0, 180, 255, 0.35),
+                    rgba(120, 0, 255, 0.25),
+                    rgba(0, 255, 200, 0.45));
+            background-size: 300% 300%;
+            animation: edge-flow 4s ease infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes edge-flow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .term-header {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 16px;
+            background: linear-gradient(180deg, rgba(0, 55, 48, 0.55), rgba(0, 18, 22, 0.95));
+            border-bottom: 1px solid rgba(0, 255, 200, 0.14);
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .term-dots {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .term-dots span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .term-dots span:nth-child(1) {
+            background: #ff5f57;
+            color: #ff5f57;
+        }
+
+        .term-dots span:nth-child(2) {
+            background: #febc2e;
+            color: #febc2e;
+        }
+
+        .term-dots span:nth-child(3) {
+            background: #28c840;
+            color: #28c840;
+        }
+
+        .term-title {
+            flex: 1;
+            text-align: center;
+            font-weight: 700;
+            color: #9effd9;
+            text-shadow: 0 0 14px rgba(0, 255, 200, 0.35);
+            letter-spacing: 0.14em;
+        }
+
+        .term-badge {
+            flex-shrink: 0;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 200, 255, 0.35);
+            background: rgba(0, 40, 60, 0.6);
+            color: #7ee8ff;
+            font-size: 9px;
+            letter-spacing: 0.12em;
+        }
+
+        .premium-term-body {
+            position: relative;
+            z-index: 2;
+            padding: 22px 24px 24px;
+        }
+
+        .premium-term-body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.11),
+                    rgba(0, 0, 0, 0.11) 1px,
+                    transparent 1px,
+                    transparent 3px);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .welcome-text {
+            position: relative;
+            z-index: 1;
+            font-size: clamp(17px, 4.2vw, 32px);
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 0.14em;
+            margin-bottom: 16px;
+            line-height: 1.25;
+            color: #e8fff7;
+            text-shadow:
+                0 0 20px rgba(0, 255, 200, 0.45),
+                0 0 40px rgba(0, 180, 255, 0.2);
+            animation: glitch 1.1s infinite;
+        }
+
+        .hacker-logo-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hacker-logo-container img {
+            width: clamp(88px, 22vw, 120px);
+            filter: drop-shadow(0 0 18px rgba(0, 255, 200, 0.55)) drop-shadow(0 0 28px rgba(0, 140, 255, 0.25));
+            animation: glitch 2s infinite;
+        }
+
+        .system-status {
+            position: relative;
+            z-index: 1;
+            font-size: 12px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(160, 255, 220, 0.92);
+        }
+
+        .system-status::after {
+            content: '▍';
+            margin-left: 4px;
+            color: #00ffc8;
+            animation: cursor-blink 0.75s step-end infinite;
+        }
+
+        @keyframes cursor-blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .progress-bar-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 11px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 200, 0.25);
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.45);
+            overflow: hidden;
+            box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .progress-bar-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.06) 50%, transparent 100%);
+            animation: progress-sheen 1.2s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes progress-sheen {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #00b8ff, #00ffc8, #7fff00);
+            box-shadow:
+                0 0 16px rgba(0, 255, 200, 0.7),
+                0 0 28px rgba(0, 180, 255, 0.35);
+            transition: width 0.05s linear;
+        }
+
+        .percentage {
+            position: relative;
+            z-index: 1;
+            text-align: right;
+            font-size: 13px;
+            margin-bottom: 14px;
+            font-weight: 700;
+            color: #b4ffe8;
+            letter-spacing: 0.12em;
+        }
+
+        .terminal-logs {
+            position: relative;
+            z-index: 1;
+            height: 118px;
+            overflow: hidden;
+            font-size: 11px;
+            line-height: 1.55;
+            color: #7dffc8;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-shadow: 0 0 8px rgba(0, 255, 200, 0.25);
+        }
+
+        .terminal-logs .log-line {
+            opacity: 0;
+            animation: log-in 0.28s ease forwards;
+        }
+
+        @keyframes log-in {
+            from {
+                opacity: 0;
+                transform: translateX(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 0 #ff2a6d, -2px 0 #00b8ff;
+            }
+
+            20% {
+                text-shadow: -2px 0 #ff2a6d, 2px 0 #00b8ff;
+            }
+
+            40% {
+                text-shadow: 2px 0 #ff2a6d, -2px 0 #00b8ff;
+            }
+
+            60% {
+                text-shadow: -2px 0 #ff2a6d, 2px 0 #00b8ff;
+            }
+
+            80% {
+                text-shadow: 2px 0 #ff2a6d, -2px 0 #00b8ff;
+            }
+
+            100% {
+                text-shadow: -2px 0 #ff2a6d, 2px 0 #00b8ff;
+            }
+        }
+
+        .contact-info {
+            display: block;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #25D366;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #ddd;
+            max-width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            line-height: 1.5;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            align-self: flex-end;
+            margin: 20px 20px 20px 0;
+            text-align: left;
+        }
+
+        .contact-info:hover {
+            background: rgba(0, 0, 0, 0.8);
+            border-color: #25D366;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        .contact-info strong {
+            color: #25D366;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-info {
+                align-self: center;
+                margin: 20px auto 10px auto;
+                max-width: 90%;
+                text-align: center;
+            }
+            .swe-drive-strip {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 8px;
+                max-width: 100%;
+                width: 100%;
+                gap: 12px;
+            }
+            .drive-premium-card {
+                flex: 0 0 auto;
+                min-width: 148px;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body class="loading">
+
+    <!-- Hacker Simulator Loader -->
+    <div id="hacker-loader">
+        <div class="cyber-scanlines" aria-hidden="true"></div>
+        <div class="cyber-vignette" aria-hidden="true"></div>
+        <div class="terminal-box">
+            <div class="term-glow-edge" aria-hidden="true"></div>
+            <div class="term-header">
+                <span class="term-dots"><span></span><span></span><span></span></span>
+                <span class="term-title">secure_console · diu-swe</span>
+                <span class="term-badge">TLS 1.3</span>
+            </div>
+            <div class="premium-term-body">
+                <div class="welcome-text">WELCOME TO DIU SWE PORTAL</div>
+                <div class="hacker-logo-container" style="text-align: center; margin-bottom: 18px;">
+                    <img src="https://i.pinimg.com/originals/58/5d/5f/585d5f202586b8cd0537e73f44b37780.png"
+                        alt="" width="120" height="120">
+                </div>
+                <div class="system-status" id="hack-status">Zero-trust session bootstrap…</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="hack-progress"></div>
+                </div>
+                <div class="percentage" id="hack-percentage">0%</div>
+                <div class="terminal-logs" id="hack-logs" aria-live="polite"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    ========================================================
+    💡 HINTS / নির্দেশিকা (কিভাবে লিংক বসাবেন):
+    ১. একদম নিচের দিকে <script> ট্যাগের ভেতরে যান।
+    ২. সেখানে 'sectionLinks' নামে একটি তালিকা দেখতে পাবেন।
+    ৩. সেখানে "A": "লিংক" এর জায়গায় আপনার নির্দিষ্ট হোয়াটসঅ্যাপ গ্রুপের লিংকটি দিন।
+    ৪. এভাবে A থেকে Z পর্যন্ত সব সেকশনের লিংক আলাদাভাবে বসাতে পারবেন।
+    ======================================================== 
+    -->
+
+    <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+
+    <div class="live-info" id="live-clock">
+        অপেক্ষা করুন...
+    </div>
+
+    <div class="logo-container">
+        <div class="logo-circle">
+            <img src="https://www.bing.com/th/id/OIP.67_08Sbxo33PrA2hR-wB6gHaHa?w=200&h=200&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                alt="DIU Logo">
+        </div>
+    </div>
+
+    <div class="uni-info">
+        <div class="uni-name">Daffodil International University</div>
+        <div class="unofficial-badge">UNOFFICIAL WEBSITE</div>
+        <div class="dept-title">B.Sc. in Software Engineering (SWE)</div>
+    </div>
+
+    <div class="swe-drive-heading">Lecture · Slide · Note (Google Drive)</div>
+    <div class="swe-drive-strip" aria-label="SWE subject folders on Google Drive">
+        <a class="drive-premium-card" href="https://drive.google.com/drive/folders/1auJ7LMBUTpK1k4sMML802nCTrItJgNRd?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <div class="drive-premium-inner">
+                <div class="drive-cat-label">SE</div>
+                <div class="drive-cat-sub">Software Engineering — ক্লাস স্লাইড ও নোট এখানে আপডেট হবে</div>
+                <div class="drive-cat-hint">Open Drive →</div>
+            </div>
+        </a>
+        <a class="drive-premium-card" href="https://drive.google.com/drive/folders/1lGOs_MOnn9qCoBawHuEvc8fa_8zgV6z3?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <div class="drive-premium-inner">
+                <div class="drive-cat-label">BNS</div>
+                <div class="drive-cat-sub">BNS — লেকচার, স্লাইড ও নোট এখানে আপডেট হবে</div>
+                <div class="drive-cat-hint">Open Drive →</div>
+            </div>
+        </a>
+        <a class="drive-premium-card" href="https://drive.google.com/drive/folders/19nlMDhlEdeWFbBPkMhM-l1b-xiZB7kcZ?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <div class="drive-premium-inner">
+                <div class="drive-cat-label">ENG</div>
+                <div class="drive-cat-sub">ENG — লেকচার, স্লাইড ও নোট এখানে আপডেট হবে</div>
+                <div class="drive-cat-hint">Open Drive →</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="global-links-container">
+        <!-- এখানে অফিসিয়াল গ্রুপের লিংক বসাবেন (href="#" এর জায়গায়) -->
+        <a href="#" target="_blank" class="global-card">
+            <span class="card-icon">🎓</span>
+            <div class="card-text">
+                <span class="card-title">SWE Official Group</span>
+                <span class="join-btn global-btn">Join Now</span>
+            </div>
+        </a>
+
+        <!-- আনঅফিসিয়াল গ্রুপের লিংক -->
+        <a href="https://chat.whatsapp.com/JJTS3zGWhEsBk7LMfw6FiF" target="_blank" class="global-card">
+            <span class="card-icon">🚀</span>
+            <div class="card-text">
+                <span class="card-title">SWE Unofficial Group</span>
+                <span class="join-btn global-btn">Join Now</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="grid-container" id="section-grid">
+    </div>
+
+    <div class="credit-box">
+        <span class="icon">⚠️ ©</span>
+        <div class="text">
+            <strong>সতর্কতা ও ক্রেডিট:</strong> ক্লাস রুটিনের এই লিংকটি <em>DiuRoutine</em> এর ডেভেলপার <strong>Aranya
+                Mahmud </strong>-এর কাছ থেকে এইখানে সংগ্রহ করা হয়েছে।
+        </div>
+    </div>
+
+    <div class="designer-badge">
+        <span class="highlight">Designed_by_The_octa_Squad</span>
+    </div>
+
+
+
+    <script>
+        // Live Date and Time Script
+        function updateClock() {
+            const now = new Date();
+            const days = ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'];
+            const dayName = days[now.getDay()];
+            const date = now.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+            const time = now.toLocaleTimeString('bn-BD');
+
+            document.getElementById('live-clock').innerHTML = `📅 ${dayName}, ${date} | 🕒 ${time}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // ==========================================
+        // 💡 HINTS / নির্দেশিকা:
+        // নিচের 'sectionLinks' অবজেক্টে প্রতিটি সেকশনের জন্য আলাদা আলাদা 
+        // হোয়াটসঅ্যাপ গ্রুপের লিংক দেওয়া আছে। 
+        // আপনি চাইলে যেকোনো সেকশনের লিংক পরিবর্তন করতে পারেন।
+        // যদি একটি সেকশনের একাধিক লিংক থাকে, তবে থার্ড ব্র্যাকেট [] এর ভেতর 
+        // কমা (,) দিয়ে লিংকগুলো বসাতে পারেন। যেমন: Section C এর উদাহরণটি দেখুন।
+        // ==========================================
+
+        const sectionLinks = {
+            "A": "https://chat.whatsapp.com/K5SmAln22nR9Ut5SwyNZvv?mode=gi_t",
+            "B": "https://chat.whatsapp.com/Jyg9zgBshADDe4WIMWKH5h",
+            "C": [
+                "https://chat.whatsapp.com/J5WofsIGvtBE5MXzUlHpUL?mode=gi_t",
+                "https://m.me/j/Aba7gQCyPvDzDrSC/?send_source=gc%3Acopy_invite_link_c"
+            ],
+            "D": "https://chat.whatsapp.com/Juik4LEhysOLDBc2hLlyh4",
+            "E": "https://chat.whatsapp.com/EgpIFPrOLr31USBOzam9ge",
+            "F": "https://chat.whatsapp.com/FWKLQjeChdOJjkQDoSe4nr",
+            "G": "https://chat.whatsapp.com/BSpN6XI2QiJ147wpD8zCPR",
+            "H": "https://chat.whatsapp.com/Dwfu9s1n9IM4FefWqerdFF?mlu=0&s=cl&p=a",
+            "I": "https://chat.whatsapp.com/IFqfy2d69kRI3G7Ns0aBcv",
+            "J": "https://chat.whatsapp.com/LH0mgQ1norO1WNoVg8hc6O"
+        };
+
+        const grid = document.getElementById('section-grid');
+
+        // Section Generator Script
+        Object.keys(sectionLinks).forEach(letter => {
+            const links = sectionLinks[letter];
+            const card = document.createElement('div');
+            card.className = 'section-card';
+
+            let buttonsHTML = '';
+            if (Array.isArray(links)) {
+                links.forEach((link, i) => {
+                    buttonsHTML += `<a href="${link}" target="_blank" class="join-btn" style="display:inline-block; margin-top:8px; text-decoration:none; color:white; width:80%;">Link ${i + 1}</a>`;
+                });
+            } else {
+                buttonsHTML = `<a href="${links}" target="_blank" class="join-btn" style="display:inline-block; margin-top:8px; text-decoration:none; color:white;">Join Group</a>`;
+            }
+
+            card.innerHTML = `
+                <span class="section-name">Section ${letter}</span>
+                <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%;">
+                    ${buttonsHTML}
+                    <a href="https://diuroutine.com/" target="_blank" class="join-btn routine-btn" style="display:inline-block; margin-top:4px; text-decoration:none; color:white;">Class Routine</a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Hacker Simulator Loader Logic
+        const loader = document.getElementById('hacker-loader');
+        const progressBar = document.getElementById('hack-progress');
+        const percentageText = document.getElementById('hack-percentage');
+        const logsContainer = document.getElementById('hack-logs');
+
+        const logs = [
+            "[AUTH] Verifying X.509 chain · OCSP stapling OK",
+            "[NET] TLS 1.3 handshake complete · cipher: AES-256-GCM",
+            "[SEC] Zero-trust policy matrix loaded · SWE scope",
+            "[SOC] Threat intel feeds synchronized (read-only)",
+            "[MEM] Secure heap scrubbed · side-channel mitigations on",
+            "[APP] Portal bundle integrity check · manifest v2",
+            "[AUDIT] Session token minted · ephemeral keypair rotated",
+            "[OK] Secure channel established — loading UI…"
+        ];
+
+        const statusByProgress = [
+            { max: 18, text: "Certificate path validation…" },
+            { max: 36, text: "Negotiating encrypted tunnel…" },
+            { max: 54, text: "Applying security policies…" },
+            { max: 72, text: "Hardening client session…" },
+            { max: 90, text: "Deploying interface modules…" },
+            { max: 100, text: "Access granted · stand by…" }
+        ];
+
+        let progress = 0;
+        const totalDuration = 3800;
+        const intervalTime = 32;
+        const totalSteps = totalDuration / intervalTime;
+        let logIndex = 0;
+
+        const statusEl = document.getElementById('hack-status');
+
+        const loaderInterval = setInterval(() => {
+            progress += (100 / totalSteps);
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(loaderInterval);
+
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.visibility = 'hidden';
+                        loader.style.display = 'none';
+                        document.body.classList.remove('loading');
+                    }, 520);
+                }, 160);
+            }
+
+            progressBar.style.width = `${progress}%`;
+            percentageText.innerText = `${Math.floor(progress)}%`;
+
+            for (const s of statusByProgress) {
+                if (progress <= s.max) {
+                    statusEl.textContent = s.text;
+                    break;
+                }
+            }
+
+            const targetLogs = Math.min(logs.length, Math.ceil((progress / 100) * logs.length));
+            while (logIndex < targetLogs) {
+                const logEl = document.createElement('div');
+                logEl.className = 'log-line';
+                logEl.textContent = `> ${logs[logIndex]}`;
+                logsContainer.appendChild(logEl);
+                logIndex++;
+
+                if (logsContainer.children.length > 6) {
+                    logsContainer.removeChild(logsContainer.firstChild);
+                }
+            }
+        }, intervalTime);
+    </script>
+</body>
+
+</html>
